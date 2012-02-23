@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Collections.Specialized;
+using System.Configuration;
 
 namespace Project1
 {
@@ -31,6 +33,11 @@ namespace Project1
         void Session_Start(object sender, EventArgs e)
         {
             // Code that runs when a new session is started
+            //SqlSiteMapProvider sqlSiteMapProvider = new SqlSiteMapProvider();
+            //NameValueCollection myCollection = new NameValueCollection();
+            //myCollection.Add("connectionStringName", "SiteMapConnectionString");
+            //myCollection.Add("sqlCacheDependency", "CommandNotification");
+            //sqlSiteMapProvider.Initialize("SqlSiteMapProvider", myCollection);
 
         }
 

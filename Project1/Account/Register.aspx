@@ -37,7 +37,6 @@
                                 <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
                                     CssClass="failureNotification" ErrorMessage="User Name is required." ToolTip="User Name is required."
                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-
                             </p>
                             <p>
                                 <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">E-mail:</asp:Label>
@@ -65,8 +64,55 @@
                             </p>
                         </fieldset>
                         <fieldset>
-                        <p>                                <asp:Label ID="lblFirstName" runat="server" AssociatedControlID="txtFirstName">First Name:</asp:Label>
-                                <asp:TextBox ID="txtFirstName" runat="server" CssClass="textEntry"></asp:TextBox></p>
+                            <legend>Personal Information</legend>
+                            <p>
+                                <asp:Label ID="lblFirstName" runat="server" AssociatedControlID="txtFirstName">First Name:</asp:Label>
+                                <asp:TextBox ID="txtFirstName" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="ConfirmFirstName" runat="server" ControlToValidate="txtFirstName"
+                                    CssClass="failureNotification" ErrorMessage="First Name is required." ToolTip="First Name is required."
+                                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator></p>
+                            <p>
+                                <asp:Label ID="lblLastName" runat="server" AssociatedControlID="txtLastName">Last Name:</asp:Label>
+                                <asp:TextBox ID="txtLastName" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="ConfirmLastName" runat="server" ControlToValidate="txtLastName"
+                                    CssClass="failureNotification" ErrorMessage="Last Name is required." ToolTip="Last Name is required."
+                                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator></p>
+                            <p>
+                                <asp:Label ID="lblAddress1" runat="server" AssociatedControlID="txtAddress1">Address1:</asp:Label>
+                                <asp:TextBox ID="txtAddress1" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtLastName"
+                                    CssClass="failureNotification" ErrorMessage="Address1 is required." ToolTip="Address1 is required."
+                                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator></p>
+                            <p>
+                                <asp:Label ID="lblAddress2" runat="server" AssociatedControlID="txtAddress2">Address2:</asp:Label>
+                                <asp:TextBox ID="txtAddress2" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtLastName"
+                                    CssClass="failureNotification" ErrorMessage="Address2 is required." ToolTip="Address2 is required."
+                                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator></p>
+                            <p>
+                                <asp:Label ID="lblCity" runat="server" AssociatedControlID="txtCity">City:</asp:Label>
+                                <asp:TextBox ID="txtCity" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtCity"
+                                    CssClass="failureNotification" ErrorMessage="City is required." ToolTip="City is required."
+                                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator></p>
+                            <p>
+                                <asp:Label ID="lblState" runat="server" AssociatedControlID="txtState">State:</asp:Label>
+                                <asp:TextBox ID="txtState" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtState"
+                                    CssClass="failureNotification" ErrorMessage="State is required." ToolTip="State is required."
+                                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator></p>
+                            <p>
+                                <asp:Label ID="lblZip" runat="server" AssociatedControlID="txtZip">Zip:</asp:Label>
+                                <asp:TextBox ID="txtZip" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtZip"
+                                    CssClass="failureNotification" ErrorMessage="Zip is required." ToolTip="Zip is required."
+                                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator></p>
+                            <p>
+                                <asp:Label ID="lblPhoneNumber" runat="server" AssociatedControlID="txtPhoneNumber">Phone Number:</asp:Label>
+                                <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPhoneNumber"
+                                    CssClass="failureNotification" ErrorMessage="PhoneNumber is required." ToolTip="PhoneNumber is required."
+                                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator></p>
                         </fieldset>
                         <p class="submitButton">
                             <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" Text="Create User"
