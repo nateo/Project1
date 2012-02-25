@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PizzaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="PizzaModelStoreContainer">
+          <EntitySet Name="Customers" EntityType="PizzaModel.Store.Customers" store:Type="Tables" Schema="db_owner" />
+          <EntitySet Name="ItemAttribute" EntityType="PizzaModel.Store.ItemAttribute" store:Type="Tables" Schema="db_owner" />
+          <EntitySet Name="Items" EntityType="PizzaModel.Store.Items" store:Type="Tables" Schema="db_owner" />
+          <EntitySet Name="Orders" EntityType="PizzaModel.Store.Orders" store:Type="Tables" Schema="db_owner" />
+          <AssociationSet Name="FK_ItemAttribute_Items" Association="PizzaModel.Store.FK_ItemAttribute_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemAttribute" EntitySet="ItemAttribute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_Orders" Association="PizzaModel.Store.FK_Items_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Address2" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="2" />
+          <Property Name="Zip" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemAttribute">
+          <Key>
+            <PropertyRef Name="ItemAttributeID" />
+          </Key>
+          <Property Name="ItemAttributeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="MarkupPercentage" Type="decimal" Nullable="false" />
+          <Property Name="MarkupFlatRate" Type="datetime" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="BasePrice" Type="decimal" />
+          <Property Name="OrderID" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="Total" Type="decimal" Nullable="false" />
+          <Property Name="Tax" Type="decimal" Nullable="false" />
+          <Property Name="Delivery" Type="decimal" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="Quanity" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ItemAttribute_Items">
+          <End Role="Items" Type="PizzaModel.Store.Items" Multiplicity="1" />
+          <End Role="ItemAttribute" Type="PizzaModel.Store.ItemAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="ItemAttribute">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_Orders">
+          <End Role="Orders" Type="PizzaModel.Store.Orders" Multiplicity="0..1" />
+          <End Role="Items" Type="PizzaModel.Store.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PizzaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="PizzaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="PizzaModel.Customer" />
+          <EntitySet Name="ItemAttributes" EntityType="PizzaModel.ItemAttribute" />
+          <EntitySet Name="Items" EntityType="PizzaModel.Item" />
+          <EntitySet Name="Orders" EntityType="PizzaModel.Order" />
+          <AssociationSet Name="FK_ItemAttribute_Items" Association="PizzaModel.FK_ItemAttribute_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemAttribute" EntitySet="ItemAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_Orders" Association="PizzaModel.FK_Items_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Address1" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Address2" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="Zip" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemAttribute">
+          <Key>
+            <PropertyRef Name="ItemAttributeID" />
+          </Key>
+          <Property Name="ItemAttributeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="MarkupPercentage" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MarkupFlatRate" Type="DateTime" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="PizzaModel.FK_ItemAttribute_Items" FromRole="ItemAttribute" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="BasePrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OrderID" Type="Int32" />
+          <NavigationProperty Name="ItemAttributes" Relationship="PizzaModel.FK_ItemAttribute_Items" FromRole="Items" ToRole="ItemAttribute" />
+          <NavigationProperty Name="Order" Relationship="PizzaModel.FK_Items_Orders" FromRole="Items" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Tax" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Delivery" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="Quanity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="PizzaModel.FK_Items_Orders" FromRole="Orders" ToRole="Items" />
+        </EntityType>
+        <Association Name="FK_ItemAttribute_Items">
+          <End Role="Items" Type="PizzaModel.Item" Multiplicity="1" />
+          <End Role="ItemAttribute" Type="PizzaModel.ItemAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="ItemAttribute">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_Orders">
+          <End Role="Orders" Type="PizzaModel.Order" Multiplicity="0..1" />
+          <End Role="Items" Type="PizzaModel.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PizzaModelStoreContainer" CdmEntityContainer="PizzaEntities">
+          <EntitySetMapping Name="Customers"><EntityTypeMapping TypeName="PizzaModel.Customer"><MappingFragment StoreEntitySet="Customers">
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="Address1" ColumnName="Address1" />
+            <ScalarProperty Name="Address2" ColumnName="Address2" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="Zip" ColumnName="Zip" />
+            <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ItemAttributes"><EntityTypeMapping TypeName="PizzaModel.ItemAttribute"><MappingFragment StoreEntitySet="ItemAttribute">
+            <ScalarProperty Name="ItemAttributeID" ColumnName="ItemAttributeID" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="MarkupPercentage" ColumnName="MarkupPercentage" />
+            <ScalarProperty Name="MarkupFlatRate" ColumnName="MarkupFlatRate" />
+            <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Items"><EntityTypeMapping TypeName="PizzaModel.Item"><MappingFragment StoreEntitySet="Items">
+            <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+            <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Orders"><EntityTypeMapping TypeName="PizzaModel.Order"><MappingFragment StoreEntitySet="Orders">
+            <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+            <ScalarProperty Name="Total" ColumnName="Total" />
+            <ScalarProperty Name="Tax" ColumnName="Tax" />
+            <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+            <ScalarProperty Name="Quanity" ColumnName="Quanity" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="PizzaModel.Customer" Width="1.5" PointX="0.75" PointY="4.75" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.ItemAttribute" Width="1.5" PointX="5.25" PointY="1.25" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Item" Width="1.5" PointX="3" PointY="1.25" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Order" Width="1.5" PointX="0.75" PointY="1" Height="2.7494921874999996" IsExpanded="true" />
+        <AssociationConnector Association="PizzaModel.FK_ItemAttribute_Items" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.3362939453125" />
+          <ConnectorPoint PointX="5.25" PointY="2.3362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="PizzaModel.FK_Items_Orders" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.3362939453125" />
+          <ConnectorPoint PointX="3" PointY="2.3362939453125" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

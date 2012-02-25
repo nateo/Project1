@@ -53,13 +53,15 @@
                                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
                                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" />
                                         <asp:MenuItem NavigateUrl="~/Admin/ViewOrders.aspx" Text="View Orders" />
-                                        <asp:MenuItem NavigateUrl="~/Admin/EditItems.aspx" Text="Edit Items" />
+                                        <asp:MenuItem NavigateUrl="~/Admin/Items.aspx" Text="Items">
+                                            <asp:MenuItem NavigateUrl="~/Admin/AddItem.aspx" Text="Add Item" />
+                                        </asp:MenuItem>
                                     </Items>
                                 </asp:Menu>
                             </ContentTemplate>
                         </asp:RoleGroup>
                         <asp:RoleGroup Roles="Customer">
-                        <ContentTemplate>
+                            <ContentTemplate>
                                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="False"
                                     IncludeStyleBlock="False" Orientation="Horizontal">
                                     <Items>
@@ -68,8 +70,8 @@
                                         <asp:MenuItem NavigateUrl="~/Customer/Checkout.aspx" Text="Checkout" />
                                         <asp:MenuItem NavigateUrl="~/Customer/ViewHistory.aspx" Text="ViewHistory" />
                                     </Items>
-                                </asp:Menu>                        
-                        </ContentTemplate>
+                                </asp:Menu>
+                            </ContentTemplate>
                         </asp:RoleGroup>
                     </RoleGroups>
                 </asp:LoginView>
