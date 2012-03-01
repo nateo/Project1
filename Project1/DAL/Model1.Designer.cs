@@ -19,7 +19,6 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("PizzaModel", "FK_ItemAttribute_Items", "Items", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project1.DAL.Item), "ItemAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project1.DAL.ItemAttribute), true)]
-[assembly: EdmRelationshipAttribute("PizzaModel", "FK_Items_Orders", "Orders", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project1.DAL.Order), "Items", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project1.DAL.Item), true)]
 
 #endregion
 
@@ -134,6 +133,22 @@ namespace Project1.DAL
             }
         }
         private ObjectSet<Order> _Orders;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SiteMap> SiteMaps
+        {
+            get
+            {
+                if ((_SiteMaps == null))
+                {
+                    _SiteMaps = base.CreateObjectSet<SiteMap>("SiteMaps");
+                }
+                return _SiteMaps;
+            }
+        }
+        private ObjectSet<SiteMap> _SiteMaps;
 
         #endregion
         #region AddTo Methods
@@ -168,6 +183,14 @@ namespace Project1.DAL
         public void AddToOrders(Order order)
         {
             base.AddObject("Orders", order);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SiteMaps EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSiteMaps(SiteMap siteMap)
+        {
+            base.AddObject("SiteMaps", siteMap);
         }
 
         #endregion
@@ -567,30 +590,6 @@ namespace Project1.DAL
         private Nullable<global::System.Decimal> _BasePrice;
         partial void OnBasePriceChanging(Nullable<global::System.Decimal> value);
         partial void OnBasePriceChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> OrderID
-        {
-            get
-            {
-                return _OrderID;
-            }
-            set
-            {
-                OnOrderIDChanging(value);
-                ReportPropertyChanging("OrderID");
-                _OrderID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("OrderID");
-                OnOrderIDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _OrderID;
-        partial void OnOrderIDChanging(Nullable<global::System.Int32> value);
-        partial void OnOrderIDChanged();
 
         #endregion
     
@@ -614,44 +613,6 @@ namespace Project1.DAL
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ItemAttribute>("PizzaModel.FK_ItemAttribute_Items", "ItemAttribute", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PizzaModel", "FK_Items_Orders", "Orders")]
-        public Order Order
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Order>("PizzaModel.FK_Items_Orders", "Orders").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Order>("PizzaModel.FK_Items_Orders", "Orders").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Order> OrderReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Order>("PizzaModel.FK_Items_Orders", "Orders");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Order>("PizzaModel.FK_Items_Orders", "Orders", value);
                 }
             }
         }
@@ -1094,31 +1055,181 @@ namespace Project1.DAL
 
         #endregion
     
-        #region Navigation Properties
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="PizzaModel", Name="SiteMap")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SiteMap : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SiteMap object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static SiteMap CreateSiteMap(global::System.Int32 id)
+        {
+            SiteMap siteMap = new SiteMap();
+            siteMap.ID = id;
+            return siteMap;
+        }
+
+        #endregion
+        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PizzaModel", "FK_Items_Orders", "Items")]
-        public EntityCollection<Item> Items
+        public global::System.Int32 ID
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Item>("PizzaModel.FK_Items_Orders", "Items");
+                return _ID;
             }
             set
             {
-                if ((value != null))
+                if (_ID != value)
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Item>("PizzaModel.FK_Items_Orders", "Items", value);
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
                 }
             }
         }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Url
+        {
+            get
+            {
+                return _Url;
+            }
+            set
+            {
+                OnUrlChanging(value);
+                ReportPropertyChanging("Url");
+                _Url = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Url");
+                OnUrlChanged();
+            }
+        }
+        private global::System.String _Url;
+        partial void OnUrlChanging(global::System.String value);
+        partial void OnUrlChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Roles
+        {
+            get
+            {
+                return _Roles;
+            }
+            set
+            {
+                OnRolesChanging(value);
+                ReportPropertyChanging("Roles");
+                _Roles = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Roles");
+                OnRolesChanged();
+            }
+        }
+        private global::System.String _Roles;
+        partial void OnRolesChanging(global::System.String value);
+        partial void OnRolesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Parent
+        {
+            get
+            {
+                return _Parent;
+            }
+            set
+            {
+                OnParentChanging(value);
+                ReportPropertyChanging("Parent");
+                _Parent = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Parent");
+                OnParentChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Parent;
+        partial void OnParentChanging(Nullable<global::System.Int32> value);
+        partial void OnParentChanged();
 
         #endregion
+    
     }
 
     #endregion

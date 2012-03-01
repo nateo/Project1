@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Project1.Admin
+namespace Project1.Admin.ItemAttributes
 {
-    public partial class Items1 : System.Web.UI.Page
+    public partial class EditItemAttributes : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

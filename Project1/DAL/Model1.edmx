@@ -10,13 +10,10 @@
           <EntitySet Name="ItemAttribute" EntityType="PizzaModel.Store.ItemAttribute" store:Type="Tables" Schema="db_owner" />
           <EntitySet Name="Items" EntityType="PizzaModel.Store.Items" store:Type="Tables" Schema="db_owner" />
           <EntitySet Name="Orders" EntityType="PizzaModel.Store.Orders" store:Type="Tables" Schema="db_owner" />
+          <EntitySet Name="SiteMap" EntityType="PizzaModel.Store.SiteMap" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_ItemAttribute_Items" Association="PizzaModel.Store.FK_ItemAttribute_Items">
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemAttribute" EntitySet="ItemAttribute" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Items_Orders" Association="PizzaModel.Store.FK_Items_Orders">
-            <End Role="Orders" EntitySet="Orders" />
-            <End Role="Items" EntitySet="Items" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customers">
@@ -51,7 +48,6 @@
           <Property Name="ItemID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="BasePrice" Type="decimal" />
-          <Property Name="OrderID" Type="int" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -66,6 +62,17 @@
           <Property Name="ItemID" Type="int" Nullable="false" />
           <Property Name="Quanity" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="SiteMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="32" />
+          <Property Name="Description" Type="varchar" MaxLength="512" />
+          <Property Name="Url" Type="varchar" MaxLength="512" />
+          <Property Name="Roles" Type="varchar" MaxLength="512" />
+          <Property Name="Parent" Type="int" />
+        </EntityType>
         <Association Name="FK_ItemAttribute_Items">
           <End Role="Items" Type="PizzaModel.Store.Items" Multiplicity="1" />
           <End Role="ItemAttribute" Type="PizzaModel.Store.ItemAttribute" Multiplicity="*" />
@@ -75,18 +82,6 @@
             </Principal>
             <Dependent Role="ItemAttribute">
               <PropertyRef Name="ItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Items_Orders">
-          <End Role="Orders" Type="PizzaModel.Store.Orders" Multiplicity="0..1" />
-          <End Role="Items" Type="PizzaModel.Store.Items" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Orders">
-              <PropertyRef Name="OrderID" />
-            </Principal>
-            <Dependent Role="Items">
-              <PropertyRef Name="OrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -100,13 +95,10 @@
           <EntitySet Name="ItemAttributes" EntityType="PizzaModel.ItemAttribute" />
           <EntitySet Name="Items" EntityType="PizzaModel.Item" />
           <EntitySet Name="Orders" EntityType="PizzaModel.Order" />
+          <EntitySet Name="SiteMaps" EntityType="PizzaModel.SiteMap" />
           <AssociationSet Name="FK_ItemAttribute_Items" Association="PizzaModel.FK_ItemAttribute_Items">
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemAttribute" EntitySet="ItemAttributes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Items_Orders" Association="PizzaModel.FK_Items_Orders">
-            <End Role="Orders" EntitySet="Orders" />
-            <End Role="Items" EntitySet="Items" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customer">
@@ -142,9 +134,7 @@
           <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="BasePrice" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="OrderID" Type="Int32" />
           <NavigationProperty Name="ItemAttributes" Relationship="PizzaModel.FK_ItemAttribute_Items" FromRole="Items" ToRole="ItemAttribute" />
-          <NavigationProperty Name="Order" Relationship="PizzaModel.FK_Items_Orders" FromRole="Items" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -158,7 +148,17 @@
           <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="ItemID" Type="Int32" Nullable="false" />
           <Property Name="Quanity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Items" Relationship="PizzaModel.FK_Items_Orders" FromRole="Orders" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="SiteMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="512" Unicode="false" FixedLength="false" />
+          <Property Name="Url" Type="String" MaxLength="512" Unicode="false" FixedLength="false" />
+          <Property Name="Roles" Type="String" MaxLength="512" Unicode="false" FixedLength="false" />
+          <Property Name="Parent" Type="Int32" />
         </EntityType>
         <Association Name="FK_ItemAttribute_Items">
           <End Role="Items" Type="PizzaModel.Item" Multiplicity="1" />
@@ -169,18 +169,6 @@
             </Principal>
             <Dependent Role="ItemAttribute">
               <PropertyRef Name="ItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Items_Orders">
-          <End Role="Orders" Type="PizzaModel.Order" Multiplicity="0..1" />
-          <End Role="Items" Type="PizzaModel.Item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Orders">
-              <PropertyRef Name="OrderID" />
-            </Principal>
-            <Dependent Role="Items">
-              <PropertyRef Name="OrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -213,7 +201,6 @@
             <ScalarProperty Name="ItemID" ColumnName="ItemID" />
             <ScalarProperty Name="Description" ColumnName="Description" />
             <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
-            <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Orders"><EntityTypeMapping TypeName="PizzaModel.Order"><MappingFragment StoreEntitySet="Orders">
             <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -224,6 +211,14 @@
             <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
             <ScalarProperty Name="ItemID" ColumnName="ItemID" />
             <ScalarProperty Name="Quanity" ColumnName="Quanity" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SiteMaps"><EntityTypeMapping TypeName="PizzaModel.SiteMap"><MappingFragment StoreEntitySet="SiteMap">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Url" ColumnName="Url" />
+            <ScalarProperty Name="Roles" ColumnName="Roles" />
+            <ScalarProperty Name="Parent" ColumnName="Parent" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
@@ -247,16 +242,13 @@
     <Diagrams>
       <Diagram Name="Model1">
         <EntityTypeShape EntityType="PizzaModel.Customer" Width="1.5" PointX="0.75" PointY="4.75" Height="2.9417936197916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="PizzaModel.ItemAttribute" Width="1.5" PointX="5.25" PointY="1.25" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="PizzaModel.Item" Width="1.5" PointX="3" PointY="1.25" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="PizzaModel.Order" Width="1.5" PointX="0.75" PointY="1" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.ItemAttribute" Width="1.5" PointX="3" PointY="0.875" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Item" Width="1.5" PointX="0.75" PointY="1.125" Height="1.7879850260416665" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Order" Width="1.5" PointX="2.75" PointY="4.75" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.SiteMap" Width="1.5" PointX="4.75" PointY="4.75" Height="2.1725878906249996" IsExpanded="true" />
         <AssociationConnector Association="PizzaModel.FK_ItemAttribute_Items" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="2.3362939453125" />
-          <ConnectorPoint PointX="5.25" PointY="2.3362939453125" />
-        </AssociationConnector>
-        <AssociationConnector Association="PizzaModel.FK_Items_Orders" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.3362939453125" />
-          <ConnectorPoint PointX="3" PointY="2.3362939453125" />
+          <ConnectorPoint PointX="2.25" PointY="2.0189925130208333" />
+          <ConnectorPoint PointX="3" PointY="2.0189925130208333" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

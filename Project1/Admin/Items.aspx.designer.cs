@@ -10,16 +10,16 @@
 namespace Project1.Admin {
     
     
-    public partial class Items {
+    public partial class Items1 {
         
         /// <summary>
-        /// ItemsEntityDataSource control.
+        /// edsEditItems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.EntityDataSource ItemsEntityDataSource;
+        protected global::System.Web.UI.WebControls.EntityDataSource edsEditItems;
         
         /// <summary>
         /// GridView1 control.
@@ -29,5 +29,23 @@ namespace Project1.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// edsAddItems control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource edsAddItems;
+        
+        /// <summary>
+        /// DetailsView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
     }
 }

@@ -53,9 +53,28 @@
                                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
                                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" />
                                         <asp:MenuItem NavigateUrl="~/Admin/ViewOrders.aspx" Text="View Orders" />
-                                        <asp:MenuItem NavigateUrl="~/Admin/Items.aspx" Text="Items">
-                                            <asp:MenuItem NavigateUrl="~/Admin/AddItem.aspx" Text="Add Item" />
+                                        <asp:MenuItem NavigateUrl="" Text="Admin">
+                                            <asp:MenuItem Text="Items">
+                                                <asp:MenuItem NavigateUrl="~/Admin/Items/AddItem.aspx" Text="Add" />
+                                                <asp:MenuItem NavigateUrl="~/Admin/Items/EditItems.aspx" Text="Edit" />
+                                            </asp:MenuItem>
+                                            <asp:MenuItem Text="Item Options">
+                                                <asp:MenuItem NavigateUrl="~/Admin/ItemAttributes/AddItemAttribute.aspx" Text="Add" />                                                
+                                                <asp:MenuItem NavigateUrl="~/Admin/ItemAttributes/EditItemAttributes.aspx" Text="Edit" />
+                                            </asp:MenuItem>
                                         </asp:MenuItem>
+                                    </Items>
+                                </asp:Menu>
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                        <asp:RoleGroup Roles="Store">
+                            <ContentTemplate>
+                                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="False"
+                                    IncludeStyleBlock="False" Orientation="Horizontal">
+                                    <Items>
+                                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
+                                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" />
+                                        <asp:MenuItem NavigateUrl="~/Admin/ViewOrders.aspx" Text="View Orders" />
                                     </Items>
                                 </asp:Menu>
                             </ContentTemplate>
@@ -68,7 +87,8 @@
                                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
                                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" />
                                         <asp:MenuItem NavigateUrl="~/Customer/Checkout.aspx" Text="Checkout" />
-                                        <asp:MenuItem NavigateUrl="~/Customer/ViewHistory.aspx" Text="ViewHistory" />
+                                        <asp:MenuItem NavigateUrl="~/Customer/ViewHistory.aspx" Text="View History" />
+                                        <asp:MenuItem NavigateUrl="~/Account/MyAccount.aspx" Text="My Account" />
                                     </Items>
                                 </asp:Menu>
                             </ContentTemplate>

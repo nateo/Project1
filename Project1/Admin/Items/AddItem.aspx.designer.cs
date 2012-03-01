@@ -10,7 +10,7 @@
 namespace Project1.Admin {
     
     
-    public partial class ViewOrders {
+    public partial class AddItem {
         
         /// <summary>
         /// EntityDataSource1 control.

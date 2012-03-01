@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project1.Admin {
+namespace Project1.Admin.ItemAttributes {
     
     
-    public partial class ViewOrders {
+    public partial class AddItemAttribute {
         
         /// <summary>
-        /// EntityDataSource1 control.
+        /// edsAddItems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.EntityDataSource EntityDataSource1;
+        protected global::System.Web.UI.WebControls.EntityDataSource edsAddItems;
         
         /// <summary>
         /// DetailsView1 control.

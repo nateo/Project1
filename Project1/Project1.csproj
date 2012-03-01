@@ -58,9 +58,13 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Account\MyAccount.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Admin\AddItem.aspx" />
+    <Content Include="Admin\ItemAttributes\AddItemAttribute.aspx" />
+    <Content Include="Admin\ItemAttributes\EditItemAttributes.aspx" />
     <Content Include="Admin\Items.aspx" />
+    <Content Include="Admin\Items\AddItem.aspx" />
+    <Content Include="Admin\Items\EditItems.aspx" />
     <Content Include="Admin\ViewOrders.aspx" />
     <Content Include="Customer\ViewHistory.aspx" />
     <Content Include="Customer\Checkout.aspx" />
@@ -108,6 +112,13 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\MyAccount.aspx.cs">
+      <DependentUpon>MyAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\MyAccount.aspx.designer.cs">
+      <DependentUpon>MyAccount.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -115,12 +126,19 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AddItem.aspx.cs">
-      <DependentUpon>AddItem.aspx</DependentUpon>
+    <Compile Include="Admin\ItemAttributes\AddItemAttribute.aspx.cs">
+      <DependentUpon>AddItemAttribute.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\AddItem.aspx.designer.cs">
-      <DependentUpon>AddItem.aspx</DependentUpon>
+    <Compile Include="Admin\ItemAttributes\AddItemAttribute.aspx.designer.cs">
+      <DependentUpon>AddItemAttribute.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ItemAttributes\EditItemAttributes.aspx.cs">
+      <DependentUpon>EditItemAttributes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ItemAttributes\EditItemAttributes.aspx.designer.cs">
+      <DependentUpon>EditItemAttributes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Items.aspx.cs">
       <DependentUpon>Items.aspx</DependentUpon>
@@ -128,6 +146,20 @@
     </Compile>
     <Compile Include="Admin\Items.aspx.designer.cs">
       <DependentUpon>Items.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Items\AddItem.aspx.cs">
+      <DependentUpon>AddItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Items\AddItem.aspx.designer.cs">
+      <DependentUpon>AddItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Items\EditItems.aspx.cs">
+      <DependentUpon>EditItems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Items\EditItems.aspx.designer.cs">
+      <DependentUpon>EditItems.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ViewOrders.aspx.cs">
       <DependentUpon>ViewOrders.aspx</DependentUpon>
