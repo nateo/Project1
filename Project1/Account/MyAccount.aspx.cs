@@ -14,46 +14,26 @@ namespace Project1.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MembershipUser currentUser = Membership.GetUser();
-            string userID = currentUser.ProviderUserKey.ToString();
-            string connectionString = ConfigurationManager.ConnectionStrings["Project1"].ToString();
-            string sql = "select * from customers where userid = '" + userID + "'";
-            Project1.BO.Customer customer = new BO.Customer();
-            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            if (!IsPostBack)
             {
-                myConnection.Open();
-                using (SqlCommand myCommand = new SqlCommand(sql, myConnection))
+                MembershipUser currentUser = Membership.GetUser();
+                string userID = currentUser.ProviderUserKey.ToString();
+                Project1.BO.Customer customer = BO.Customer.GetCustomer(userID);
+                if (customer != null)
                 {
-                    using (SqlDataReader myDataReader = myCommand.ExecuteReader())
-                    {
-                        if (myDataReader.Read())
-                        {
-                            customer = new BO.Customer(
-                                myDataReader["FirstName"].ToString(),
-                                myDataReader["LastName"].ToString(),
-                                myDataReader["Address1"].ToString(),
-                                myDataReader["Address2"].ToString(),
-                                myDataReader["City"].ToString(),
-                                myDataReader["State"].ToString(),
-                                myDataReader["Zip"].ToString(),
-                                myDataReader["PhoneNumber"].ToString());
-                            Session["UserID"] = myDataReader["UserID"].ToString();
-                        }
-                    }
+                    txtFirstName.Text = customer.FirstName;
+                    txtLastName.Text = customer.LastName;
+                    txtAddress1.Text = customer.Address1;
+                    txtAddress2.Text = customer.Address2;
+                    txtCity.Text = customer.City;
+                    txtState.Text = customer.State;
+                    txtZip.Text = customer.Zip;
+                    txtPhoneNumber.Text = customer.PhoneNumber;
+                    Session["UserID"] = customer.UserID;
                 }
             }
-            if (customer != null)
-            {
-                txtFirstName.Text = customer.FirstName;
-                txtLastName.Text = customer.LastName;
-                txtAddress1.Text = customer.Address1;
-                txtAddress2.Text = customer.Address2;
-                txtCity.Text = customer.City;
-                txtState.Text = customer.State;
-                txtZip.Text = customer.Zip;
-                txtPhoneNumber.Text = customer.PhoneNumber;
-            }
         }
+
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
@@ -64,6 +44,7 @@ namespace Project1.Account
             txtCity.Text = string.Empty;
             txtState.Text = string.Empty;
             txtZip.Text = string.Empty;
+            txtPhoneNumber.Text = string.Empty;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -71,7 +52,7 @@ namespace Project1.Account
 
             string sql = string.Empty;
 
-            if (Session["UserID"] != null)
+            if (Session["UserID"] == null)
             {
 
                 BO.Customer customer = new BO.Customer(
@@ -89,6 +70,7 @@ namespace Project1.Account
                 if (BO.Customer.UpdateCustomer(customer, "sp_CreateCustomer", customer.UserID))
                 {
                     lblConfirmation.Text = "Personal information updated";
+                    Session["UserID"] = Membership.GetUser().ProviderUserKey.ToString();
                 }
                 else
                 {
@@ -109,7 +91,7 @@ namespace Project1.Account
                     Membership.GetUser().ProviderUserKey.ToString()
                 );
 
-                if (BO.Customer.UpdateCustomer(customer, "sp_CreateCustomer", customer.UserID))
+                if (BO.Customer.UpdateCustomer(customer, "sp_UpdateCustomer", customer.UserID))
                 {
                     lblConfirmation.Text = "Personal information updated";
                 }

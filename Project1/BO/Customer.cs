@@ -45,6 +45,36 @@ namespace Project1.BO
             this.UserID = userID;
         }
 
+        internal static Project1.BO.Customer GetCustomer(string userID)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Project1"].ToString();
+            string sql = "select * from customers where userid = '" + userID + "'";
+            Project1.BO.Customer customer = new Customer();
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(sql, myConnection))
+                {
+                    using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                    {
+                        if (myDataReader.Read())
+                        {
+                            customer = new BO.Customer(
+                                myDataReader["FirstName"].ToString(),
+                                myDataReader["LastName"].ToString(),
+                                myDataReader["Address1"].ToString(),
+                                myDataReader["Address2"].ToString(),
+                                myDataReader["City"].ToString(),
+                                myDataReader["State"].ToString(),
+                                myDataReader["Zip"].ToString(),
+                                myDataReader["PhoneNumber"].ToString());
+                        }
+                    }
+                }
+            }
+            return customer;
+        }
+
         internal static bool UpdateCustomer(Customer customer, string spName, string userID)
         {
             bool result = false;
