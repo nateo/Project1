@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project1.Account
+namespace WebApplication1.Account
 {
 
 

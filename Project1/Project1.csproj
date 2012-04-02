@@ -168,6 +168,7 @@
     <Compile Include="Admin\ViewOrders.aspx.designer.cs">
       <DependentUpon>ViewOrders.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BO\Customer.cs" />
     <Compile Include="Customer\ViewHistory.aspx.cs">
       <DependentUpon>ViewHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
