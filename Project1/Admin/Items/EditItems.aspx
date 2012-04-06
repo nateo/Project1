@@ -14,8 +14,7 @@
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ItemID" 
         DataSourceID="ItemsEntityDataSource">
         <Columns>
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
-                ShowSelectButton="True" />
+            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
             <asp:TemplateField HeaderText="Description" SortExpression="Description">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>

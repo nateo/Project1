@@ -5,9 +5,9 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        Welcome to ASP.NET!
+        Please order some pizza. Thank you.
     </h2>
     <p>
-        Please order some pizza. Thank you.
+        
     </p>
 </asp:Content>

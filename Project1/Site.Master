@@ -58,9 +58,9 @@
                                                 <asp:MenuItem NavigateUrl="~/Admin/Items/AddItem.aspx" Text="Add" />
                                                 <asp:MenuItem NavigateUrl="~/Admin/Items/EditItems.aspx" Text="Edit" />
                                             </asp:MenuItem>
-                                            <asp:MenuItem Text="Item Options">
-                                                <asp:MenuItem NavigateUrl="~/Admin/ItemAttributes/AddItemAttribute.aspx" Text="Add" />                                                
-                                                <asp:MenuItem NavigateUrl="~/Admin/ItemAttributes/EditItemAttributes.aspx" Text="Edit" />
+                                            <asp:MenuItem Text="Item Attributes">
+                                                <asp:MenuItem NavigateUrl="~/Admin/ItemAttributes/UpdateItemAttribute.aspx?action=Add" Text="Add" />                                                
+                                                <asp:MenuItem NavigateUrl="~/Admin/ItemAttributes/ItemAttributes.aspx" Text="Edit" />
                                             </asp:MenuItem>
                                         </asp:MenuItem>
                                     </Items>

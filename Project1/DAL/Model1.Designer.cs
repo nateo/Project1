@@ -839,9 +839,8 @@ namespace Project1.DAL
         /// <param name="tax">Initial value of the Tax property.</param>
         /// <param name="delivery">Initial value of the Delivery property.</param>
         /// <param name="customerID">Initial value of the CustomerID property.</param>
-        /// <param name="itemID">Initial value of the ItemID property.</param>
         /// <param name="quanity">Initial value of the Quanity property.</param>
-        public static Order CreateOrder(global::System.Int32 orderID, global::System.DateTime orderDate, global::System.Decimal total, global::System.Decimal tax, global::System.Decimal delivery, global::System.Int32 customerID, global::System.Int32 itemID, global::System.Int32 quanity)
+        public static Order CreateOrder(global::System.Int32 orderID, global::System.DateTime orderDate, global::System.Decimal total, global::System.Decimal tax, global::System.Decimal delivery, global::System.Int32 customerID, global::System.Int32 quanity)
         {
             Order order = new Order();
             order.OrderID = orderID;
@@ -850,7 +849,6 @@ namespace Project1.DAL
             order.Tax = tax;
             order.Delivery = delivery;
             order.CustomerID = customerID;
-            order.ItemID = itemID;
             order.Quanity = quanity;
             return order;
         }
@@ -1004,30 +1002,6 @@ namespace Project1.DAL
         private global::System.Int32 _CustomerID;
         partial void OnCustomerIDChanging(global::System.Int32 value);
         partial void OnCustomerIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ItemID
-        {
-            get
-            {
-                return _ItemID;
-            }
-            set
-            {
-                OnItemIDChanging(value);
-                ReportPropertyChanging("ItemID");
-                _ItemID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ItemID");
-                OnItemIDChanged();
-            }
-        }
-        private global::System.Int32 _ItemID;
-        partial void OnItemIDChanging(global::System.Int32 value);
-        partial void OnItemIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
