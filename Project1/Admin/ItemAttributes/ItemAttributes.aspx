@@ -12,7 +12,7 @@
                         Item
                     </td>
                     <td>
-                        Description
+                        Item Attibute
                     </td>
                     <td>
                         MarkupPercentage
@@ -34,7 +34,7 @@
                     <%# Eval("ItemDescription") %>
                 </td>
                 <td>
-                    <%# Eval("Description") %>
+                    <%# Eval("ItemAttributeDescription") %>
                 </td>
                 <td>
                     <%# Eval("MarkupPercentage")%>

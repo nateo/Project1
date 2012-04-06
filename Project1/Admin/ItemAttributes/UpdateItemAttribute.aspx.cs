@@ -18,14 +18,14 @@ namespace Project1.Admin.ItemAttributes
                 switch (Request.QueryString["action"])
                 {
                     case "Add":
-                        foreach (BO.Item item in BO.Item.Items())
+                        foreach (BO.Item item in BO.Item.GetItems())
                         {
                             this.ddlItems.Items.Add(item.Description);
                         }
                         break;
                     case "Edit":
                         ddlItems.Items.Clear();
-                        foreach (BO.Item item in BO.Item.Items())
+                        foreach (BO.Item item in BO.Item.GetItems())
                         {
                             this.ddlItems.Items.Add(item.Description);
                         }
@@ -34,10 +34,6 @@ namespace Project1.Admin.ItemAttributes
                         this.txtDescription.Text = itemAttribute.Description;
                         this.txtMarkupFlatRate.Text = itemAttribute.MarkupFlatRate;
                         this.txtMarkupPercentage.Text = itemAttribute.MarkupPertcentage;
-                        //this.txtDescription = 
-                        break;
-                    case "Delete":
-                        // to do
                         break;
                 }
             }

@@ -67,6 +67,7 @@
     <Content Include="Admin\Items\AddItem.aspx" />
     <Content Include="Admin\Items\EditItems.aspx" />
     <Content Include="Admin\ViewOrders.aspx" />
+    <Content Include="Customer\OrderFood.aspx" />
     <Content Include="Customer\ViewHistory.aspx" />
     <Content Include="Customer\Checkout.aspx" />
     <Content Include="Order.aspx" />
@@ -179,6 +180,14 @@
     <Compile Include="BO\Customer.cs" />
     <Compile Include="BO\Item.cs" />
     <Compile Include="BO\ItemAttribute.cs" />
+    <Compile Include="BO\OrderItem.cs" />
+    <Compile Include="Customer\OrderFood.aspx.cs">
+      <DependentUpon>OrderFood.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\OrderFood.aspx.designer.cs">
+      <DependentUpon>OrderFood.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Customer\ViewHistory.aspx.cs">
       <DependentUpon>ViewHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

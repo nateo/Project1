@@ -19,8 +19,9 @@ namespace WebApplication1.Account
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
             FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
-
-            string continueUrl = RegisterUser.ContinueDestinationPageUrl;
+            Roles.AddUserToRole(RegisterUser.UserName, "customer");
+            //string continueUrl = RegisterUser.ContinueDestinationPageUrl;
+            string continueUrl = "MyAccount.aspx";
             if (String.IsNullOrEmpty(continueUrl))
             {
                 continueUrl = "~/";

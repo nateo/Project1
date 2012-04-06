@@ -45,7 +45,7 @@ namespace Project1.BO
             return itemID;
         }
 
-        internal static List<Item> Items()
+        internal static List<Item> GetItems()
         {
             List<Item> items = new List<Item>();
             string connectionString = ConfigurationManager.ConnectionStrings["Project1"].ToString();

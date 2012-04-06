@@ -19,6 +19,7 @@ namespace Project1.BO
         internal string Zip;
         internal string PhoneNumber;
         internal string UserID;
+        internal string CustomerID;
 
         public Customer()
         { }
@@ -45,6 +46,31 @@ namespace Project1.BO
             this.UserID = userID;
         }
 
+        public Customer(
+            string firstName,
+            string lastName,
+            string address1,
+            string address2,
+            string city,
+            string state,
+            string zip,
+            string phoneNumber,
+            string userID,
+            string customerID)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Address1 = address1;
+            this.Address2 = address2;
+            this.City = city;
+            this.State = state;
+            this.Zip = zip;
+            this.PhoneNumber = phoneNumber;
+            this.UserID = userID;
+            this.CustomerID = customerID;
+        }
+
+
         internal static Project1.BO.Customer GetCustomer(string userID)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["Project1"].ToString();
@@ -67,7 +93,9 @@ namespace Project1.BO
                                 myDataReader["City"].ToString(),
                                 myDataReader["State"].ToString(),
                                 myDataReader["Zip"].ToString(),
-                                myDataReader["PhoneNumber"].ToString());
+                                myDataReader["PhoneNumber"].ToString(),
+                                myDataReader["UserID"].ToString(),
+                                myDataReader["CustomerID"].ToString());
                         }
                     }
                 }
