@@ -13,5 +13,23 @@ namespace Project1.Admin
         {
 
         }
+
+        protected void gvItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblAttributes.Visible = true;
+            gvItemAttributes.Enabled = true;
+            dvItemAttributes.Enabled = true;
+            lblToppings.Visible = true;
+            gvToppings.Enabled= true;
+            dvToppings.Enabled = true;
+
+            sdsItemAttributes.SelectParameters["ItemID"].DefaultValue = gvItems.SelectedValue.ToString(); ;
+            sdsItemAttributes.InsertParameters["ItemID"].DefaultValue = gvItems.SelectedValue.ToString();
+            sdsToppings.SelectParameters["ItemID"].DefaultValue = gvItems.SelectedValue.ToString();
+            sdsToppings.InsertParameters["ItemID"].DefaultValue = gvItems.SelectedValue.ToString();
+
+        }
+
+
     }
 }

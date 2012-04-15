@@ -53,16 +53,7 @@
                                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
                                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" />
                                         <asp:MenuItem NavigateUrl="~/Admin/ViewOrders.aspx" Text="View Orders" />
-                                        <asp:MenuItem NavigateUrl="" Text="Admin">
-                                            <asp:MenuItem Text="Items">
-                                                <asp:MenuItem NavigateUrl="~/Admin/Items/AddItem.aspx" Text="Add" />
-                                                <asp:MenuItem NavigateUrl="~/Admin/Items/EditItems.aspx" Text="View & Edit" />
-                                            </asp:MenuItem>
-                                            <asp:MenuItem Text="Item Attributes">
-                                                <asp:MenuItem NavigateUrl="~/Admin/ItemAttributes/UpdateItemAttribute.aspx?action=Add" Text="Add" />                                                
-                                                <asp:MenuItem NavigateUrl="~/Admin/ItemAttributes/ItemAttributes.aspx" Text="View & Edit" />
-                                            </asp:MenuItem>
-                                        </asp:MenuItem>
+                                        <asp:MenuItem NavigateUrl="~/Admin/Items.aspx" Text="Admin" />
                                     </Items>
                                 </asp:Menu>
                             </ContentTemplate>
@@ -86,7 +77,7 @@
                                     <Items>
                                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
                                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" />
-                                        <asp:MenuItem NavigateUrl="~/Customer/OrderFood.aspx" Text="Order Food" />
+                                        <asp:MenuItem NavigateUrl="~/Customer/OrderFoodNew.aspx" Text="Order Food" />
                                         <asp:MenuItem NavigateUrl="~/Customer/Checkout.aspx" Text="Checkout" />
                                         <asp:MenuItem NavigateUrl="~/Customer/ViewHistory.aspx" Text="View History" />
                                         <asp:MenuItem NavigateUrl="~/Account/MyAccount.aspx" Text="My Account" />

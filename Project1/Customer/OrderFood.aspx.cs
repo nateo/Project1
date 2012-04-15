@@ -42,36 +42,36 @@ namespace Project1.Customer
         protected void btnAddToCart_Click(object sender, EventArgs e)
         {
             // Credte Order ID
-            string connectionString = ConfigurationManager.ConnectionStrings["Project1"].ToString();
-            if (Session["OrderID"] == null)
-            {
-                using (SqlConnection myConnection = new SqlConnection(connectionString))
-                {
-                    myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand("sp_CreateOrder", myConnection))
-                    {
-                        myCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                        string customerID =  BO.Customer.GetCustomer(Membership.GetUser().ProviderUserKey.ToString()).CustomerID;
-                        myCommand.Parameters.AddWithValue("CustomerID", customerID);
-                        Session["OrderID"] = myCommand.ExecuteScalar();
-                    }
-                }
-            }
+            //string connectionString = ConfigurationManager.ConnectionStrings["Project1"].ToString();
+            //if (Session["OrderID"] == null)
+            //{
+            //    using (SqlConnection myConnection = new SqlConnection(connectionString))
+            //    {
+            //        myConnection.Open();
+            //        using (SqlCommand myCommand = new SqlCommand("sp_CreateOrder", myConnection))
+            //        {
+            //            myCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            //            //string customerID =  BO.Customer.GetCustomer(Membership.GetUser().ProviderUserKey.ToString()).CustomerID;
+            //            myCommand.Parameters.AddWithValue("CustomerID", customerID);
+            //            Session["OrderID"] = myCommand.ExecuteScalar();
+            //        }
+            //    }
+            //}
             // Add Items
-            using (SqlConnection myConnection = new SqlConnection(connectionString))
-            {
-                myConnection.Open();
-                using (SqlCommand myCommand = new SqlCommand("sp_AddItemToCart", myConnection))
-                {
-                    myCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    myCommand.Parameters.AddWithValue("OrderID", Session["OrderID"]);
-                    myCommand.Parameters.AddWithValue("@ItemAttributeID", BO.ItemAttribute.GetItemAttributeID(
-                        ddlItemOptions.Text));
-                    myCommand.Parameters.AddWithValue("@Quantity", txtQuantity.Text);
-                    myCommand.ExecuteNonQuery();
-                }
-            }
-            Response.Redirect("OrderFood.aspx");
+            //using (SqlConnection myConnection = new SqlConnection(connectionString))
+            //{
+            //    myConnection.Open();
+            //    using (SqlCommand myCommand = new SqlCommand("sp_AddItemToCart", myConnection))
+            //    {
+            //        myCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            //        myCommand.Parameters.AddWithValue("OrderID", Session["OrderID"]);
+            //        myCommand.Parameters.AddWithValue("@ItemAttributeID", BO.ItemAttribute.GetItemAttributeID(
+            //            ddlItemOptions.Text));
+            //        myCommand.Parameters.AddWithValue("@Quantity", txtQuantity.Text);
+            //        myCommand.ExecuteNonQuery();
+            //    }
+            //}
+            //Response.Redirect("OrderFood.aspx");
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)

@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project1.Account {
+namespace Project1.Customer {
     
     
-    public partial class MyAccountNew {
+    public partial class OrderFoodNew {
         
         /// <summary>
-        /// dvCustomer control.
+        /// sdsOrderItems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView dvCustomer;
-        
-        /// <summary>
-        /// sdsCustomer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sdsCustomer;
+        protected global::System.Web.UI.WebControls.SqlDataSource sdsOrderItems;
     }
 }
