@@ -46,4 +46,6 @@
             </tr>
         </ItemTemplate>
     </asp:ListView>
+    <asp:Button ID="btnCheckout" runat="server" Text="Checkout" 
+        onclick="btnCheckout_Click" />
 </asp:Content>

@@ -13,21 +13,21 @@ namespace Project1.Admin {
     public partial class ViewOrders {
         
         /// <summary>
-        /// EntityDataSource1 control.
+        /// chkFilterDelivered control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.EntityDataSource EntityDataSource1;
+        protected global::System.Web.UI.WebControls.CheckBox chkFilterDelivered;
         
         /// <summary>
-        /// DetailsView1 control.
+        /// lvOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
+        protected global::System.Web.UI.WebControls.ListView lvOrders;
     }
 }

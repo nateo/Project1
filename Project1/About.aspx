@@ -8,6 +8,6 @@
         About
     </h2>
     <p>
-        Put content here.
+        Make in the United States of American, buy an american.
     </p>
 </asp:Content>

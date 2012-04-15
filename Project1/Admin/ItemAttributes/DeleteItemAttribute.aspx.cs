@@ -16,7 +16,7 @@ namespace Project1.Admin.ItemAttributes
 
         }
 
-        protected void btnYes_Click(object sender, EventArgs e)
+        protected void btnYes_Click1(object sender, EventArgs e)
         {
             int itemAttribute = 0;
             if (int.TryParse(Request.QueryString["ItemAttributeID"].ToString(), out itemAttribute))
@@ -34,7 +34,10 @@ namespace Project1.Admin.ItemAttributes
                     }
                 }
             }
-
+            lblResult.Text = "Deleted";
+            Response.Redirect("ItemAttributes.aspx");
         }
+
+
     }
 }

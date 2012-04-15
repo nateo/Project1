@@ -41,6 +41,7 @@ namespace Project1.Customer
 
         protected void btnAddToCart_Click(object sender, EventArgs e)
         {
+            // Credte Order ID
             string connectionString = ConfigurationManager.ConnectionStrings["Project1"].ToString();
             if (Session["OrderID"] == null)
             {
@@ -56,6 +57,7 @@ namespace Project1.Customer
                     }
                 }
             }
+            // Add Items
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 myConnection.Open();
@@ -70,6 +72,11 @@ namespace Project1.Customer
                 }
             }
             Response.Redirect("OrderFood.aspx");
+        }
+
+        protected void btnCheckout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Checkout.aspx");
         }
     }
 }
