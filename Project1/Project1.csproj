@@ -138,6 +138,7 @@
       <DependentUpon>ViewOrders.aspx</DependentUpon>
     </Compile>
     <Compile Include="BO\Customer.cs" />
+    <Compile Include="BO\Extra.cs" />
     <Compile Include="BO\Item.cs" />
     <Compile Include="BO\ItemAttribute.cs" />
     <Compile Include="BO\OrderItem.cs" />

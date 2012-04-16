@@ -19,14 +19,12 @@ namespace Project1.Admin
             lblAttributes.Visible = true;
             gvItemAttributes.Enabled = true;
             dvItemAttributes.Enabled = true;
-            lblToppings.Visible = true;
-            gvToppings.Enabled= true;
-            dvToppings.Enabled = true;
+            lblExtras.Visible = true;
+            gvExtras.Enabled= true;
+            dvExtras.Enabled = true;
 
-            sdsItemAttributes.SelectParameters["ItemID"].DefaultValue = gvItems.SelectedValue.ToString(); ;
-            sdsItemAttributes.InsertParameters["ItemID"].DefaultValue = gvItems.SelectedValue.ToString();
-            sdsToppings.SelectParameters["ItemID"].DefaultValue = gvItems.SelectedValue.ToString();
-            sdsToppings.InsertParameters["ItemID"].DefaultValue = gvItems.SelectedValue.ToString();
+            sdsItemAttributes.SelectParameters["ItemID"].DefaultValue = gvItems.SelectedValue.ToString();
+            sdsExtras.SelectParameters["ItemID"].DefaultValue = gvItems.SelectedValue.ToString();
 
         }
 

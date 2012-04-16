@@ -40,40 +40,40 @@ namespace Project1.Admin {
         protected global::System.Web.UI.WebControls.GridView gvItems;
         
         /// <summary>
-        /// dvToppings control.
+        /// dvExtras control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView dvToppings;
+        protected global::System.Web.UI.WebControls.DetailsView dvExtras;
         
         /// <summary>
-        /// lblToppings control.
+        /// lblExtras control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblToppings;
+        protected global::System.Web.UI.WebControls.Label lblExtras;
         
         /// <summary>
-        /// gvToppings control.
+        /// gvExtras control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvToppings;
+        protected global::System.Web.UI.WebControls.GridView gvExtras;
         
         /// <summary>
-        /// sdsToppings control.
+        /// sdsExtras control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sdsToppings;
+        protected global::System.Web.UI.WebControls.SqlDataSource sdsExtras;
         
         /// <summary>
         /// dvItemAttributes control.

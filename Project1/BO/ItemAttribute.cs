@@ -14,16 +14,16 @@ namespace Project1.BO
         internal string Description;
         internal string MarkupPertcentage;
         internal string MarkupFlatRate;
-        internal string ItemDescription;
+        internal string ItemAttributeID;
 
         public ItemAttribute() { }
 
-        public ItemAttribute(string description, string markupPertcentage, string markupFlatRate, string itemDescription)
+        public ItemAttribute(string description, string markupPertcentage, string markupFlatRate, string itemAttributeID)
         {
             this.Description = description;
             this.MarkupPertcentage = markupPertcentage;
             this.MarkupFlatRate = markupFlatRate;
-            this.ItemDescription = itemDescription;
+            this.ItemAttributeID = itemAttributeID;
         }
 
 
@@ -65,7 +65,7 @@ namespace Project1.BO
                             itemAttribute.Description = myDataReader["ItemAttributeDescription"].ToString();
                             itemAttribute.MarkupPertcentage = myDataReader["MarkupPercentage"].ToString();
                             itemAttribute.MarkupFlatRate = myDataReader["MarkupFlatRate"].ToString();
-                            itemAttribute.ItemDescription = myDataReader["ItemDescription"].ToString();
+                            itemAttribute.ItemAttributeID = myDataReader["ItemAttributeID"].ToString();
                         }
                     }
                 }
@@ -73,13 +73,13 @@ namespace Project1.BO
             return itemAttribute;
         }
 
-        internal static IEnumerable<string> GetItemOptions(string itemID)
+        internal static IEnumerable<ItemAttribute> GetItemAttributes(string itemID)
         {
-            List<string> itemAttributes = new List<string>();
-            string connectionString = ConfigurationManager.ConnectionStrings["Project1"].ToString();
-            string sql = "select Description as ItemAttributeDescription" +
-                " from ItemAttribute where ItemID = " + itemID;
+            List<ItemAttribute> itemAttributes = new List<ItemAttribute>();
             ItemAttribute itemAttribute = new ItemAttribute();
+            string connectionString = ConfigurationManager.ConnectionStrings["Project1"].ToString();
+            string sql = "select Description, MarkupPercentage, MarkupFlatRate,ItemAttributeID " +
+                " from ItemAttribute where ItemID = " + itemID;
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 myConnection.Open();
@@ -89,7 +89,12 @@ namespace Project1.BO
                     {
                         while (myDataReader.Read())
                         {
-                            itemAttributes.Add(myDataReader["ItemAttributeDescription"].ToString());
+                            itemAttributes.Add(new ItemAttribute(
+                                myDataReader["Description"].ToString(),
+                                myDataReader["MarkupPercentage"].ToString(),
+                                myDataReader["MarkupFlatRate"].ToString(),
+                                myDataReader["ItemAttributeID"].ToString()));
+
                         }
                     }
                 }

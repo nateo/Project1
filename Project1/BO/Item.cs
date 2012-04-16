@@ -57,9 +57,8 @@ namespace Project1.BO
                 {
                     using (SqlDataReader myDataReader = myCommand.ExecuteReader())
                     {
-                        if (myDataReader.Read())
+                        while (myDataReader.Read())
                         {
-                            //Int32.TryParse(myDataReader["ItemID"].ToString(), out itemID);
                             items.Add(new Item(
                                 Convert.ToInt16(myDataReader["ItemID"].ToString()),
                                 myDataReader["Description"].ToString(),

@@ -24,11 +24,10 @@ namespace Project1.Customer
                 }
                 ddlItems.Text = ddlItems.Items[1].Text;
                 ddlItemOptions.Items.Add("");
-                foreach (string itemOption in BO.ItemAttribute.GetItemOptions(
-                    BO.Item.GetItemID(ddlItems.Text).ToString()))
-                {
-                    this.ddlItemOptions.Items.Add(itemOption);
-                }
+                //foreach (string itemOption in BO.ItemAttribute.GetItemAttributes(ddlItems.Text))
+                //{
+                //    this.ddlItemOptions.Items.Add(itemOption);
+                //}
                 ddlItemOptions.Text = "";
             }
             if (Session["OrderID"] != null)

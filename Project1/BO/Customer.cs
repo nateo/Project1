@@ -52,10 +52,10 @@ namespace Project1.BO
         }
 
 
-        internal static Project1.BO.Customer GetCustomer(string userID)
+        internal static Project1.BO.Customer GetCustomer(string userName)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["Project1"].ToString();
-            string sql = "select * from customers where userid = '" + userID + "'";
+            string sql = "select * from customers where username = '" + userName + "'";
             Project1.BO.Customer customer = new Customer();
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
@@ -75,7 +75,7 @@ namespace Project1.BO
                                 myDataReader["State"].ToString(),
                                 myDataReader["Zip"].ToString(),
                                 myDataReader["PhoneNumber"].ToString(),
-                                myDataReader["UserID"].ToString(),
+                                myDataReader["UserName"].ToString(),
                                 myDataReader["CustomerID"].ToString());
                         }
                     }
